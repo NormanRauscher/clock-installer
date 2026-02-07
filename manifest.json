@@ -1,0 +1,12 @@
+{
+  "name": "Rauscher 3Dcraft Modular Clock",
+  "version": "1.1.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        { "path": "firmware.bin", "offset": 0 }
+      ]
+    }
+  ]
+}
