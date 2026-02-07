@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
-            background-color: #1a202c; /* Logo-Anthrazit */
+            background-color: #1a202c; 
             color: #e2e8f0; 
             display: flex;
             flex-direction: column;
@@ -37,11 +37,23 @@
         p { color: #a0aec0; margin-bottom: 2rem; line-height: 1.6; }
         .footer { margin-top: 2rem; font-size: 0.8rem; color: #718096; }
         
-        /* Button Styling */
-        esp-web-install-button {
-            --esp-tools-button-color: #4a5568;
-            --esp-tools-button-text-color: #ffffff;
-            --esp-tools-button-border-radius: 10px;
+        /* Custom Button Style */
+        .btn-install {
+            background-color: #00d4ff; /* Dein Rauscher-Blau */
+            color: #1a202c;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(0, 212, 255, 0.3);
+        }
+        .btn-install:hover {
+            background-color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
         }
     </style>
 </head>
@@ -51,12 +63,16 @@
         <h1>Modular Clock</h1>
         <p>Willkommen beim Firmware-Installer. Schließen Sie Ihre Core-Unit per USB an und klicken Sie auf Installieren.</p>
         
-        <esp-web-install-button manifest="manifest.json"></esp-web-install-button>
+        <esp-web-install-button manifest="./manifest.json">
+            <button slot="activate" class="btn-install">
+                INSTALLATION STARTEN
+            </button>
+        </esp-web-install-button>
         
         <div class="footer">
-            &copy; 2026 Rauscher 3Dcraft. Alle Rechte vorbehalten.
+            &copy; 2026 Rauscher 3Dcraft. Alle Rechte vorbehalten.<br>
+            <small>Nutze Chrome oder Edge für die Installation.</small>
         </div>
     </div>
 </body>
-
 </html>
