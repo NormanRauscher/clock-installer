@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rauscher 3Dcraft | Firmware Installer</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+            background-color: #1a202c; /* Logo-Anthrazit */
+            color: #e2e8f0; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #2d3748; 
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 450px;
+            border: 1px solid #4a5568;
+        }
+        img.logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+        }
+        h1 { margin-bottom: 0.5rem; font-size: 1.8rem; color: #fff; }
+        p { color: #a0aec0; margin-bottom: 2rem; line-height: 1.6; }
+        .footer { margin-top: 2rem; font-size: 0.8rem; color: #718096; }
+        
+        /* Button Styling */
+        esp-web-install-button {
+            --esp-tools-button-color: #4a5568;
+            --esp-tools-button-text-color: #ffffff;
+            --esp-tools-button-border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="Rauscher 3Dcraft Logo" class="logo">
+        <h1>Modular Clock</h1>
+        <p>Willkommen beim Firmware-Installer. Schließen Sie Ihre Core-Unit per USB an und klicken Sie auf Installieren.</p>
+        
+        <esp-web-install-button manifest="./manifest.json"></esp-web-install-button>
+        
+        <div class="footer">
+            &copy; 2026 Rauscher 3Dcraft. Alle Rechte vorbehalten.
+        </div>
+    </div>
+</body>
+</html>
