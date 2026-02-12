@@ -34,12 +34,11 @@
             filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
         }
         h1 { margin-bottom: 0.5rem; font-size: 1.8rem; color: #fff; }
-        p { color: #a0aec0; margin-bottom: 2rem; line-height: 1.6; }
+        p { color: #a0aec0; margin-bottom: 2rem; line-height: 1.6; min-height: 3em; }
         .footer { margin-top: 2rem; font-size: 0.8rem; color: #718096; }
         
-        /* Custom Button Style */
         .btn-install {
-            background-color: #00d4ff; /* Dein Rauscher-Blau */
+            background-color: #00d4ff;
             color: #1a202c;
             padding: 12px 24px;
             font-size: 1rem;
@@ -60,19 +59,45 @@
 <body>
     <div class="container">
         <img src="logo.png" alt="Rauscher 3Dcraft Logo" class="logo">
-        <h1>Modular Clock</h1>
-        <p>Willkommen beim Firmware-Installer. Schließen Sie Ihre Core-Unit per USB an und klicken Sie auf Installieren.</p>
+        <h1 id="t-title">Modular Clock</h1>
+        <p id="t-desc">Laden...</p>
         
-        <esp-web-install-button manifest="./manifest.json">
-            <button slot="activate" class="btn-install">
-                INSTALLATION STARTEN
+        <esp-web-install-button id="install-button" manifest="./manifest.json">
+            <button slot="activate" class="btn-install" id="t-btn">
+                LADEN...
             </button>
         </esp-web-install-button>
         
-        <div class="footer">
-            &copy; 2026 Rauscher 3Dcraft. Alle Rechte vorbehalten.<br>
-            <small>Nutze Chrome oder Edge für die Installation.</small>
+        <div class="footer" id="t-footer">
+            &copy; 2026 Rauscher 3Dcraft. <span id="t-rights">Alle Rechte vorbehalten.</span><br>
+            <small id="t-small">Nutze Chrome oder Edge für die Installation.</small>
         </div>
     </div>
+
+    <script>
+        const dict = {
+            de: { desc: "Willkommen beim Firmware-Installer. Schließen Sie Ihre Core-Unit per USB an und klicken Sie auf Installieren.", btn: "INSTALLATION STARTEN", rights: "Alle Rechte vorbehalten.", small: "Nutze Chrome oder Edge für die Installation." },
+            en: { desc: "Welcome to the firmware installer. Connect your core unit via USB and click Install.", btn: "START INSTALLATION", rights: "All rights reserved.", small: "Use Chrome or Edge for installation." },
+            zh: { desc: "欢迎使用固件安装程序。通过 USB 连接您的核心单元并点击安装。", btn: "开始安装", rights: "保留所有权利。", small: "请使用 Chrome 或 Edge 浏览器进行安装。" },
+            fr: { desc: "Bienvenue dans l'installateur de firmware. Connectez votre unité centrale via USB et cliquez sur Installer.", btn: "LANCER L'INSTALLATION", rights: "Tous droits réservés.", small: "Utilisez Chrome ou Edge pour l'installation." },
+            it: { desc: "Benvenuti nell'installatore firmware. Collegate la vostra unità centrale via USB e cliccate su Installa.", btn: "AVVIA INSTALLAZIONE", rights: "Tutti i diritti riservati.", small: "Usa Chrome o Edge per l'installazione." },
+            es: { desc: "Bienvenido al instalador de firmware. Conecte su unidad central por USB y haga clic en Instalar.", btn: "INICIAR INSTALACIÓN", rights: "Todos los derechos reservados.", small: "Usa Chrome o Edge para la instalación." },
+            pt: { desc: "Bem-vindo ao instalador de firmware. Conecte sua unidade central via USB e clique em Instalar.", btn: "INICIAR INSTALAÇÃO", rights: "Todos os direitos reservados.", small: "Use Chrome ou Edge para a instalação." },
+            ru: { desc: "Добро пожаловать в установщик прошивки. Подключите основное устройство через USB и нажмите «Установить».", btn: "НАЧАТЬ УСТАНОВКУ", rights: "Все права защищены.", small: "Используйте Chrome или Edge для установки." },
+            pl: { desc: "Witamy w instalatorze oprogramowania układowego. Podłącz jednostkę centralną przez USB i kliknij Zainstaluj.", btn: "URUCHOM INSTALACJĘ", rights: "Wszelkie prawa zastrzeżone.", small: "Użyj Chrome lub Edge do instalacji." },
+            ja: { desc: "ファームウェアインストーラーへようこそ。コアユニットをUSBで接続し、インストールをクリックしてください。", btn: "インストール開始", rights: "全著作権所有。", small: "インストールにはChromeまたはEdgeを使用してください。" },
+            ko: { desc: "펌웨어 설치 프로그램에 오신 것을 환영합니다. USB로 코어 유닛을 연결하고 설치를 클릭하십시오.", btn: "설치 시작", rights: "모든 권리 보유.", small: "설치를 위해 Chrome 또는 Edge를 사용하십시오." },
+            hi: { desc: "फर्मवेयर इंस्टॉलर में आपका स्वागत है। अपनी कोर यूनिट को USB से कनेक्ट करें और इंस्टॉल पर क्लिक करें।", btn: "इंस्टॉलेशन शुरू करें", rights: "सर्वाधिकार सुरक्षित।", small: "इंस्टॉलेशन के लिए Chrome या Edge का उपयोग करें।" },
+            ar: { desc: "مرحبًا بك في مثبت البرامج الثابتة. قم بتوصيل وحدتك المركزية عبر USB وانقر فوق تثبيت.", btn: "بدء التثبيت", rights: "جميع الحقوق محفوظة.", small: "استخدم Chrome أو Edge للتثبيت." }
+        };
+
+        const userLang = navigator.language.split('-')[0];
+        const l = dict[userLang] || dict['en'];
+
+        document.getElementById("t-desc").innerText = l.desc;
+        document.getElementById("t-btn").innerText = l.btn;
+        document.getElementById("t-rights").innerText = l.rights;
+        document.getElementById("t-small").innerText = l.small;
+    </script>
 </body>
 </html>
