@@ -1,7 +1,7 @@
 {
   "name": "Rauscher 3Dcraft Professional Clock",
   "version": "1.3.0",
-  "home_page": "https://github.com/DEIN_NUTZERNAME/DEIN_REPO",
+  "home_page": "https://normanrauscher.github.io/clock-installer/",
   "builds": [
     {
       "chipFamily": "ESP32",
